@@ -2,6 +2,8 @@ package com.qa.usvisa.factory;
 
 import com.microsoft.playwright.*;
 
+import java.sql.SQLOutput;
+
 public class PlaywrightFactory {
 
     Playwright playwright;
@@ -15,25 +17,24 @@ public class PlaywrightFactory {
         playwright = Playwright.create();
         switch (browserName.toLowerCase()){
             case "chromium":
-                playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+                browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
                 break;
             case "chrome":
-                playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(false));
+                browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(false));
                 break;
             case "firefox":
-                playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false));
+                browser = playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false));
                 break;
             case "safari":
-                playwright.webkit().launch(new BrowserType.LaunchOptions().setHeadless(false));
+                browser =  playwright.webkit().launch(new BrowserType.LaunchOptions().setHeadless(false));
                 break;
             default:
                 System.out.println("Wrong browser Option");
                 break;
         }
-
         browserContext = browser.newContext();
         page = browserContext.newPage();
-        page.navigate("www.google.com");
+        page.navigate("https://ais.usvisa-info.com/en-ca/niv/users/sign_in");
 
         return page;
     }
