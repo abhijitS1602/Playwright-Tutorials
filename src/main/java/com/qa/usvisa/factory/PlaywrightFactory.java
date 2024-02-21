@@ -1,10 +1,13 @@
 package com.qa.usvisa.factory;
 
 import com.microsoft.playwright.*;
+import com.qa.usvisa.Constants;
 
 import java.sql.SQLOutput;
 
 public class PlaywrightFactory {
+
+
 
     Playwright playwright;
     Browser browser;
@@ -34,7 +37,7 @@ public class PlaywrightFactory {
         }
         browserContext = browser.newContext();
         page = browserContext.newPage();
-        page.navigate("https://ais.usvisa-info.com/en-ca/niv/users/sign_in");
+        page.navigate(Constants.URL);
 
         return page;
     }

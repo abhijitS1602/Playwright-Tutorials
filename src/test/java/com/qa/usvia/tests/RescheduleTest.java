@@ -21,7 +21,7 @@ public class RescheduleTest {
     }
 
     @Test
-    public void search_for_appointment(){
+    public void search_for_appointment() throws InterruptedException {
         homePage.sign_in();
     }
 
